@@ -1,3 +1,4 @@
+// SCRIPT SCREEN LOBBY
 let mainUrl = "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes"
 
 function getAllQuizzes(){
@@ -15,3 +16,4 @@ function showQuizzes(quizzes){
         quizzSpace.innerHTML += `<div class="quizz"> <img src="${data[i].image}"> <p>${data[i].title}</p> </div>`
     }
 }
+// SCRIPT SCREEN IN QUIZZ
