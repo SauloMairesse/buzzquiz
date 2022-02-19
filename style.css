@@ -1,3 +1,7 @@
+body {
+    background-color: #E5E5E5;;
+}
+
 .main-title {
     display: flex;
     align-items: center;
@@ -117,4 +121,80 @@
 /* Style Screen 2 */
 .hide-me{
     display: none;
+}
+
+/* Style Screen 3*/
+
+.quizz-creation {
+    margin-top: 136px;
+    display: none;
+}
+
+.title-creation {
+    margin-bottom: 29px;
+    text-align: center;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.form-initial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+}
+
+.form-initial input {
+    width: 341px;
+    height: 46px;
+    border: 1px solid #D1D1D1;
+    margin-bottom: 9px;
+    border-radius: 5px;
+    font-family: roboto;
+    font-size: 19px;
+    font-weight: 400;
+    font-style: italic;
+    color: #BABABA;
+}
+
+.initial-button{
+    width: 324px;
+    height: 54px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    font-size: 18px;
+    font-family: roboto;
+    text-align: center;
+    color:#FFF5F4;;
+    margin-top: 29px;
+}
+
+.button-creation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.question-creation {
+    display: none;
+    margin-top: 136px;
+}
+
+.level-creation {
+    display: none;
+    margin-top: 136px;
+}
+
+.subtitle {
+    font-size: 20px;
+    font-family: roboto;
+    font-weight: 700;
+    width: 374px;
+    margin: 0px 0px 12px 30px;
 }
