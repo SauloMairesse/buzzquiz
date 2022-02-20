@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>BuzzQuizz</title>
+</head>
+
+<body>
+    <header>
+        <div class="main-title">
+            <h1>BuzzQuizz</h1>
+        </div>
+    </header>
+    
+    <main>
+        <!-- SCREEN 1 HOME -->
+
+        <section class="home"></section>
+
+        <!-- SCRREN 2 QUIZZ -->
+
+        <div class="quezz-screen hide-me" >
+        </div>
+
+        <!-- SCREEN 3 CREATION -->
+        <section class="quizz-creation">
+            <div class="title-creation">
+                <h1>Comece pelo começo</h1>
+            </div>
+            <form class="form-initial"></form>
+            <div class="button-creation">
+                <button onclick="showQuestionsCreationScreen()" class="initial-button">Prosseguir pra criar perguntas</button>
+            </div>
+        </section>
+        <section class="question-creation">
+            <div class="title-creation">
+                <h1>Crie perguntas</h1>
+            </div>
+            <form class="questions-space"></form>
+            <div class="button-creation">
+                <button onclick="showLevelCreationScreen()" class="initial-button">Prosseguir pra criar níveis</button>
+            </div>
+        </section>
+        <section class="level-creation">
+            <form class="levels-space"></form>
+            <div class="button-creation">
+                <button onclick="showFinalScreen()" class="initial-button">Finalizar Quizz</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
+    <script src="script.js"></script>
+</body>
+</html>
