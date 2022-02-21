@@ -22,10 +22,10 @@ function showQuizzes(quizzes){
                             <div class="section-title"> 
                                 <p>Todos os Quizzes</p> 
                             </div> 
-                            <div class="quizzes"></div>`
+                            <div data-identifier="general-quizzes" class="quizzes"></div>`
     let quizzSpace = document.querySelector(".quizzes")
     for(let i = 0; i < data.length; i++){
-        quizzSpace.innerHTML += `<div class="quizz" onclick="callSelectedQuizz(${data[i].id})">
+        quizzSpace.innerHTML += `<div data-identifier="quizz-card" class="quizz" onclick="callSelectedQuizz(${data[i].id})">
                                         <img src="${data[i].image}">
                                         <p>${data[i].title}</p>
                                     </div>`
@@ -70,7 +70,7 @@ function colocarQuestions(resposta) {
     for(let i = 0; i < resposta.data.questions.length; i++){
         let opcoesDeResposta = resposta.data.questions[i].answers;
         let questionsSpaceHTML = document.querySelector('.questions-space');
-        questionsSpaceHTML.innerHTML +=   `<article class="question q${i}">
+        questionsSpaceHTML.innerHTML +=   `<article data-identifier="question" class="question q${i}">
                                                 <div class="title-question">
                                                     <p>${resposta.data.questions[i].title}</p>
                                                 </div>
@@ -86,7 +86,7 @@ function colocarOpcoesDeResposta(opcoesDeResposta,i){
     arrayDeRespostasPossiveis.push(opcoesDeResposta)
     let optionsSpace = document.querySelector(`.q${i} .options-space`);
     for(let c = 0; c < opcoesDeResposta.length; c++){
-        optionsSpace.innerHTML += `<div class="option opt${c}" onclick="selectOption(${i}, ${c})">
+        optionsSpace.innerHTML += `<div data-identifier="answer" class="option opt${c}" onclick="selectOption(${i}, ${c})">
                                         <img src="${opcoesDeResposta[c].image}">
                                         <p>${opcoesDeResposta[c].text}</p>
                                         <span class="${opcoesDeResposta[c].isCorrectAnswer} hide-me"></span>
@@ -156,7 +156,7 @@ function mostrarLevels(resposta){
     //printarOlevel 
     for(let i = 0; i < resposta.data.levels.length; i++){
         if(meuLevel == resposta.data.levels[i].minValue){
-            quezzResultHTML.innerHTML +=`<div class="title-quezz-result">
+            quezzResultHTML.innerHTML +=`<div data-identifier="quizz-result" class="title-quezz-result">
                                             <h1>${resposta.data.levels[i].title}</h1>
                                         </div>
                                         <div class = img-legenda-results>          
@@ -235,7 +235,7 @@ function questionCreation(){
                 <div class="subtitle">
                     <h1>Pergunta ${i}</h1>
                 </div>
-                <input type="text" minlength="20" class="form-input input0 required" placeholder="Texto da pergunta" required>
+                <input data-identifier="question" type="text" minlength="20" class="form-input input0 required" placeholder="Texto da pergunta" required>
                 <input type="text" class="form-input input1 required" placeholder="Cor de fundo da pergunta" required>
                 <div class="subtitle">
                     <h1>Resposta correta</h1>
@@ -267,14 +267,14 @@ function levelCreation(){
                 <div class="subtitle">
                     <h1>Nível ${i}</h1>
                 </div>
-                <input class="form-input input0 required" minlength="10" type="text" placeholder="Título do nível">
+                <input data-identifier="level" class="form-input input0 required" minlength="10" type="text" placeholder="Título do nível">
                 <input class="form-input input1 required" min="0" max="100" type="number" placeholder="% de acerto mínima">
                 <input class="form-input input2 required" type="url" placeholder="URL da imagem do nível">
                 <input class="form-input input3 required" minlength="30" type="text" placeholder="Descrição do nível">
             </div>`
         }
     levels.innerHTML += `<div class="button-creation">
-    <button onclick="showFinalScreen()" class="initial-button">Finalizar Quizz</button>
+    <button data-identifier="create-quizz" onclick="showFinalScreen()" class="initial-button">Finalizar Quizz</button>
     </div>`
 }
 
