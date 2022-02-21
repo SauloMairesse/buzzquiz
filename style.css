@@ -1,9 +1,11 @@
 body {
     background-color: #E5E5E5;;
 }
-
+*{
+    word-break: break-all;
+}
 /*  */
-*img{
+img{
     object-fit: cover;
 }
 /*  */
@@ -124,7 +126,6 @@ body {
 }
 
 /* Style Screen 2 */
-
 .hide-me{
     display: none;
 }
@@ -141,7 +142,7 @@ body {
 figure{
     width: 100%;
     height: 142px;
-    margin-bottom: 10px;
+    margin-bottom: 24px;
 }
 
 figure img{
@@ -151,11 +152,13 @@ figure img{
     object-fit: cover;
 }
 figcaption p {
+    font-family: Roboto;
     position: relative;
     text-align: center;
     z-index: 1;
-    font-size: 20px;
-    top: 75px;
+    font-size: 19px;
+    top: 70px;
+    padding: 0px 16px 0px 16px;
     color: #ffffff;
 }
 
@@ -234,7 +237,7 @@ figcaption p {
     align-items: center;
     text-align: center;
     margin-bottom: 13px;
-    background-color: red;
+    background-color: #EC362D;
 }
 
 .title-quezz-result p{
@@ -285,7 +288,6 @@ button{
     font-size: 18px;
     border: none;
 }
-
 .button-restart-quizz{
     background-color: #EC362D;
     color: white;
@@ -323,6 +325,85 @@ h1{
     color: #ffffff;
 }
 
+@media(min-width: 700px){
+    figure{
+        height: 227px;
+        margin-bottom: 42px;
+    }
+    figure img{
+        height: 227px;
+    }
+    figcaption p {
+        font-size: 27px;
+        top: 110px;
+    }
+    .question-space{
+        margin-bottom: 10px;
+    } 
+    .question{
+        width: 690px;
+        padding: 35px 35px 35px 35px;
+        margin-bottom: 23px;
+    }
+    .title-question{
+        height: 138px;
+        margin-bottom: 13px;
+    }
+    h1{
+        font-size: 25px;
+    }
+    .option{
+        width: 330px;
+        margin-bottom: 19px;
+    }
+    .option img{
+        height: 175px;
+        margin-bottom: 8px;
+    }
+    .option p{
+        font-size: 20px;
+        line-height: 23px;
+    }
+    .quezz-result{
+        width: 725px;
+        margin-bottom: 80px;
+        justify-content: center;
+        align-items: center;
+    }
+    .title-quezz-result{
+        height: 100px;
+        margin-bottom: 18px;
+    }
+    .title-quezz-result p{
+        font-size: 25px;
+        line-height: 27px;
+    }  
+    .img-legenda-results{
+        display: flex;
+        margin-bottom: 20px;
+        justify-content: space-between;
+    }
+    .img-legenda-results img{
+        width: 365px;
+    }
+    .img-legenda-results p{
+        width: 328px;
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    button{
+        width: 200px;
+        height: 52px;
+        font-size: 21px;
+    }
+    .button-restart-quizz{
+        margin-bottom: 16px;
+    }
+    .button-back-to-home{
+        margin-bottom: 8px;
+    }    
+}
 
 /* Style Screen 3*/
 

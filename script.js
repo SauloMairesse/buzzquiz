@@ -158,9 +158,11 @@ function mostrarLevels(resposta){
         if(meuLevel == resposta.data.levels[i].minValue){
             quezzResultHTML.innerHTML +=`<div class="title-quezz-result">
                                             <h1>${resposta.data.levels[i].title}</h1>
-                                        </div>          
-                                        <img src="${resposta.data.levels[i].image}">
-                                        <p class="legenda">${resposta.data.levels[i].text}</p><br>` 
+                                        </div>
+                                        <div class = img-legenda-results>          
+                                            <img src="${resposta.data.levels[i].image}">
+                                            <p class="legenda">${resposta.data.levels[i].text}</p><br>
+                                        </div>` 
         }
     }
     let quezzScreenHTML = document.querySelector('.quezz-screen');
