@@ -81,7 +81,7 @@ img{
 }
 
 .quizzes{
-    margin-top: 100px;
+    margin-top: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,6 +92,7 @@ img{
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
     position: relative;
     margin-bottom: 14px;
@@ -420,17 +421,7 @@ h1{
     font-weight: 700;
 }
 
-.form-initial {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    background-color: #FFFFFF;
-}
-
-.form-initial input {
+.form-input {
     width: 341px;
     height: 46px;
     border: 1px solid #D1D1D1;
@@ -479,4 +470,38 @@ h1{
     font-weight: 700;
     width: 374px;
     margin: 0px 0px 12px 30px;
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+}
+
+.final{
+    display: none;
+}
+
+@media screen and (min-width: 1000px) {
+    .quizzes {
+        width: 1051px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .create-quizz {
+        width: 1051px;
+        height: 181px;
+    }
+
+    .section-title {
+        margin-left: 9%;
+    }
 }
