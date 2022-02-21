@@ -1,8 +1,6 @@
 function comparador() { 
 	return Math.random() - 0.5;
 }
-let porcentagemDeAcertos;
-
 // SCRIPT SCREEN LOBBY
 const MAINURL = "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes"
 
@@ -37,6 +35,9 @@ function showQuizzes(quizzes){
 // SCRIPT SCREEN IN QUIZZ
 let arrayDeRespostasPossiveis = [];
 let identificadorDoQuizz;
+let porcentagemDeAcertos;
+let meuLevel;
+
 function callSelectedQuizz(identifierQuizz) {
     const HIDEHOME = document.querySelector('.home');
     const QUEZZSCREEN = document.querySelector('.quezz-screen');
@@ -60,23 +61,7 @@ function startQuizz(resposta){
                                 </section>
 
                                 <section class="quezz-result">
-                                    <div class="title-quezz-result">
-                                        <p></p>
-                                    </div>
-                                    <div>
-                                        <img src="">
-                                        <span></span>
-                                    </div>
-                                </section>
-
-                                <footer class="footer-quezz-screen">
-                                    <button class="button-restart-quizz">
-                                        Reiniciar Quezz
-                                    </button>
-                                    <button class="button-back-to-home">
-                                        voltar pra home
-                                    </button>
-                                </footer>`
+                                </section>`
     colocarQuestions(resposta);                                 
     }
 
@@ -130,9 +115,9 @@ function selectOption(questaoDaOpcao,opcaoSelecionada){
         setTimeout(function(){
             document.querySelector(`.q${questaoDaOpcao + 1}`).scrollIntoView({block: "center"});},500);
     }
-    else{
+    if(document.querySelectorAll('.selecionada').length == document.querySelectorAll('.question').length){   
         calcularAcertos();
-    }
+    }   
 }
 
 function calcularAcertos(){
@@ -144,19 +129,73 @@ function calcularAcertos(){
 
 function rechamandoOQuizz(){
     const quizz = axios.get(`${MAINURL}/${identificadorDoQuizz}`);
-    quizz.then(mostrarLeveis);
+    quizz.then(mostrarLevels);
 }
 
-//iniciando a tela de resultado. Parei aqui
-function mostrarLeveis(resposta){
-    console.log(resposta.data.levels)
+function mostrarLevels(resposta){
+    console.log(resposta.data.levels);
+    let arrayDeLevels = [];
+    let quezzResultHTML = document.querySelector('.quezz-result');
+    
+    //ordemCrescente
+    for(let count = 0; count < resposta.data.levels.length; count++){
+        arrayDeLevels.push(resposta.data.levels[count].minValue)
+        arrayDeLevels.sort();
+    }
+    //pegarOLevel
+    for(let count = 0; count < arrayDeLevels.length; count++){
+        if(porcentagemDeAcertos >= arrayDeLevels[count]){
+            if(!arrayDeLevels[count+1]){
+                meuLevel = arrayDeLevels[count]
+            }
+        }
+        else{
+            meuLevel = arrayDeLevels[count - 1];
+            count = arrayDeLevels.length;
+        }
+    }
+    //printarOlevel 
+    for(let i = 0; i < resposta.data.levels.length; i++){
+        if(meuLevel == resposta.data.levels[i].minValue){
+            console.log('entrei aqui')
+            quezzResultHTML.innerHTML +=`<div class="title-quezz-result">
+                                            <p>${resposta.data.levels[i].title}</p>
+                                        </div>          
+                                        <img src="${resposta.data.levels[i].image}">
+                                        <p class="legenda">${resposta.data.levels[i].text}</p><br>` 
+        }
+    }
+    let quezzScreenHTML = document.querySelector('.quezz-screen');
+    quezzScreenHTML.innerHTML +=`<footer class="footer-quezz-screen">
+                                    <button class="button-restart-quizz" onclick="reiniciarQuizz()">
+                                        Reiniciar Quezz
+                                    </button>
+                                    <button class="button-back-to-home" onclick="voltarPraHome()">
+                                        voltar pra home
+                                    </button>
+                                </footer>`
+    setTimeout(function(){
+        document.querySelector('footer').scrollIntoView({block: "center"});},500)
+}
+
+function reiniciarQuizz(){
+    arrayDeRespostasPossiveis.length = 0;
+    porcentagemDeAcertos = "";
+    meuLevel = "";
+    let a = document.querySelector('.quezz-screen')
+    a.innerHTML = " ";
+    callSelectedQuizz(identificadorDoQuizz);
+}
+
+function voltarPraHome(){
+    window.scrollTo(0,0);
+    window.location.reload();
 }
 
 // SCRIPT SCREEN QUIZZ CREATION
 let numberOfLevels = 0
 let numberOfQuestions = 0
 let startAnswers = []
-
 
 function showCreationScreen(){
     document.querySelector(".home").style.display = "none"
